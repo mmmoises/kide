@@ -57,22 +57,42 @@
                                                 </div>
                                                
                                                 <br>
-                                                 <small class="form-group"><p> {!! $card->descripcion!!}
-                                                        </p></small>
+                                                <div class="col-md-12">
+                                                        <p> 
+                                                                {!! $card->descripcion!!}
+                                                                   </p>
+                                                </div>
+                                                 
                                             </div>
 
                                             <div class="col-md-4">
                                                 {!!QrCode::size(150)->generate($card->id_promo) !!}
-
                                             </div>
                                               
                                         </div>
-                                </div>
-                                <hr>
-                                <div class="text-center">
-                                    <button href="#" class="btn btn-simple"><i class="fa fa-facebook-square"></i></button>
-                                    <button href="#" class="btn btn-simple"><i class="fa fa-twitter"></i></button>
-                                    <button href="#" class="btn btn-simple"><i class="fa fa-google-plus-square"></i></button>
+                                        <div class="row">
+                                            <div class="col-md-12">
+
+                                                <div class="col-md-6">
+                                                        <label class="form-check-label">Fecha de Inicio: {!! $card->fechaInicio!!}</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                        <label class="form-check-label">Fecha limite: {!! $card->fechaFinal!!}</label>   
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+
+                                                <div class="col-md-6">
+                                                        <label class="form-check-label">Condicion: {!! $card->condicion!!}</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                        <label class="form-check-label">Participantes: {!! $card->participantes!!}</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
                                 </div>
                             </div>
            </div>

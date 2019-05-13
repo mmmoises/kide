@@ -26,7 +26,7 @@ class CardController extends Controller
     }
 
     public function index(){
-         $cards = \DB::table('Promociones')->where('id_emisor', auth()->user()->id )->select('titulo','descripcion','condicion', 'fechaInicio','fechaFinal','id_promo')->get();
+         $cards = \DB::table('Promociones')->where('id_emisor', auth()->user()->id )->select('titulo','descripcion','condicion', 'fechaInicio','fechaFinal','id_promo', 'participantes')->get();
          return view('web.cards', compact('cards'));
     }
 
