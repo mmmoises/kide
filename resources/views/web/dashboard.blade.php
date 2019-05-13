@@ -1,25 +1,28 @@
-@extends('layout.app')
+@extends('layout.dash')
 
-@section('content')
-    <br>
+@section('Uname', auth()->user()->name)
 
-    <div class="col-md-4 offset-md-4">
-        <div class="card">
-            <div class="card-header">
-                <h3 class="card-title"> Bienvenido {{auth()->user()->name}} </h3>
-            </div>
-            <div class="card-body">
-                <strong> Email: </strong> {{auth()->user()->email}}
+@section('header', 'Dashboard')
+@section('icon')
+    <i class="fa fa-dashboard"></i>
+@endsection
 
-            </div>
-            <div class="card-footer">
-                 <form method="POST" action="{{ route('logout')}}">
-                       {{ csrf_field() }}
-                        <button class="btn btn-danger"> Cerrar Sesion </button>
-                </form>
-            </div>
+@section('nav')
 
-        </div>
-    </div>
+    <li class="active">
+        <a href="#">
+            <i class="pe-7s-graph"></i>
+            <p>Dashboard</p>
+        </a>
+    </li>
+
+     <li>
+     <a href="{{URL::route('cards')}}">
+             <i class="pe-7s-albums"></i>
+             <p>Cards</p>
+         </a>
+     </li>
+
     
 @endsection
+

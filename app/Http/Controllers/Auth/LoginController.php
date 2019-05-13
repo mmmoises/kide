@@ -26,12 +26,7 @@ class LoginController extends Controller
         ]);
 
         if(Auth::attempt($credentials)){
-            if( auth()->user()->tipo  == '1'){
                 return redirect()-> route('dashboard');
-            }else{
-                return redirect()-> route('create');
-            }
-           
         }
 
         return back()

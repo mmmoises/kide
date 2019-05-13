@@ -1,43 +1,52 @@
 @extends('layout.app')
+@section('title', 'Login')
 
 @section('content')
 <br>
 <br>
 <br>
 <br>
-<br>
-<br>
+
 <div class="row">
-    <div class="col-md-4  offset-md-2">
-        <div class="collapse multi-collapse" id="multiCollapseExample1">
+    <div class="col-md-4 ">
+        @if ($errors->any())
+        <div class="" id="multiCollapseExample1"> 
+        @else
+            <div class="collapse multi-collapse" id="multiCollapseExample1">
+        @endif
+      
              <div class="">
-                <form method="POST" action="">
+             <form method="POST" action="{{route('create')}}">
+                    {{ csrf_field() }}
 
                     <div class="form-group">
-                            <label for="user">Nombre Completo</label>
-                            <input type="text" class="form-control">
+                            <label for="namenew">Nombre Completo</label>
+                            <input name="namenew"type="text" value = "{{old('namenew')}}" class="form-control {{$errors ->has('namenew') ?'is-invalid' : '' }}">
+                            {!! $errors -> first('namenew', '<small class=" invalid-feedback"> :message </small>') !!}
                     </div>
 
                     <div class="form-group">
-                            <label for="user">Correo</label>
-                            <input type="email" class="form-control">
+                            <label for="emailnew">Correo</label>
+                            <input name="emailnew" value = "{{old('emailnew')}}" type="email" class="form-control">
                     </div>
 
                     <div class="form-group">
-                            <label for="user">Usuario</label>
-                            <input type="text" class="form-control">
+                            <label for="usernew">Usuario</label>
+                            <input name="usernew" value = "{{old('usernew')}}" type="text" class="form-control {{$errors ->has('usernew') ?'is-invalid' : '' }}">
+                            {!! $errors -> first('usernew', '<small class=" invalid-feedback"> usuario invalido </small>') !!}
                     </div>
 
                     <div class="form-group">
-                            <label for="user">Password</label>
-                            <input type="password" class="form-control">
+                            <label for="passwordnew">Password</label>
+                            <input name="passwordnew" type="password" class="form-control {{$errors ->has('passwordnew') ?'is-invalid' : '' }}">
+                            {!! $errors -> first('usernew', '<small class=" invalid-feedback"> :message </small>') !!}
                     </div>
 
                     <div class="form-group">
                             <label for="exampleFormControlSelect1">Example select</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
-                              <option>Empresa</option>
-                              <option>Cliente</option>
+                            <select name="tiponew" class="form-control" id="exampleFormControlSelect1">
+                              <option value="1">Empresa</option>
+                              <option value="0">Cliente</option>
                             </select>
                           </div>
 
@@ -51,13 +60,13 @@
         </div>
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-4  ">
         <div class="card">
-            <div class="card-header">
-                <h1 class="card-title"> Ingreso </h1>
+            <div class="header">
+                <h1 class="title"> Ingreso </h1>
             </div>
 
-            <div class="card-body">
+            <div class="content">
             <form method="POST" action="{{ route('login') }}" >
                     {{ csrf_field() }}
                      <div class="form-group  ">
@@ -65,7 +74,7 @@
                          <input class="form-control {{$errors ->has('user') ?'is-invalid' : '' }}"
                                 name="user" 
                                 value = "{{old('user')}}"
-                                placeholder="ingrese User Name" >
+                                placeholder="Ingrese User Name" >
                         {!! $errors -> first('user', '<small class=" invalid-feedback"> :message </small>') !!}
                      </div>
 
@@ -78,9 +87,9 @@
                                    {!! $errors -> first('password', '<small class=" invalid-feedback"> :message </small>') !!} 
                     </div>
 
-                    <button class="btn btn-primary btn-bock">Acceder</button>
+                    <button class="btn btn-primary btn-bock btn-round">Acceder</button>
 
-                    <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Nuevo Usuario</a>
+                    <a class="btn btn-primary btn-round" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Nuevo Usuario</a>
                 </form>
             </div>
         </div>

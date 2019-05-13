@@ -14,8 +14,14 @@
 Route::get('/','Auth\LoginController@showLoginForm')->middleware('guest');
 
 Route::get('dashboard', 'DashboardController@index')->name('dashboard');
-Route::get('create', 'DashboardController@create')->name('create');
+Route::get('cards','DashboardController@cards')->name('cards');
+Route::post('create', 'UsuairoController@create')->name('create');
 
 
 Route::post('login', 'Auth\LoginController@login')->name('login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+
+
+
+Route::any('dashboard', array('as'=> 'dashboard', 'uses' => 'DashboardController@index'));
+Route::any('cards', array('as'=> 'cards', 'uses' => 'DashboardController@cards'));

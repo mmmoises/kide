@@ -17,4 +17,8 @@ class DashboardController extends Controller
     public function create(){
         return view('auth.create');
     }
+
+    public function cards(){
+        return view('web.cards');
+    }
 }
